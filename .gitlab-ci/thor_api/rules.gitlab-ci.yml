@@ -1,0 +1,362 @@
+
+.if-deploy-local: &if-deploy-local
+  if: '$CI_COMMIT_TAG =~ /^deploy-thor-local-\d{8}-\d+.*$ */'
+
+.if-deploy-thor-thor-api-local: &if-deploy-thor-thor-api-local
+  if: '$CI_COMMIT_TAG =~ /^deploy-thor-thor-api-local- */'
+
+.if-deploy-sit: &if-deploy-sit
+  if: '$CI_COMMIT_TAG =~ /^deploy-thor-sit-\d{8}-\d+.*$ */'
+
+.if-deploy-thor-thor-api-sit: &if-deploy-thor-thor-api-sit
+  if: '$CI_COMMIT_TAG =~ /^deploy-thor-thor-api-sit- */'
+
+.if-deploy-uat: &if-deploy-uat
+  if: '$CI_COMMIT_TAG =~ /^deploy-thor-uat-\d{8}-\d+.*$ */'
+
+.if-deploy-thor-thor-api-uat: &if-deploy-thor-thor-api-uat
+  if: '$CI_COMMIT_TAG =~ /^deploy-thor-thor-api-uat- */'
+
+.if-deploy-thor-thor-api-prod: &if-deploy-thor-thor-api-prod
+  if: '$CI_COMMIT_TAG =~ /^deploy-thor-thor-api-prod- */'
+
+.if-deploy-thor-thor-api-aws: &if-deploy-thor-thor-api-aws
+  if: '$CI_COMMIT_TAG =~ /^deploy-thor-thor-api-aws- */'
+
+
+.if-deploy-local1: &if-deploy-local1
+  if: '$CI_COMMIT_TAG =~ /^deploy-thor-local1-\d{8}-\d+.*$ */'
+
+.if-deploy-thor-thor-api-local1: &if-deploy-thor-thor-api-local1
+  if: '$CI_COMMIT_TAG =~ /^deploy-thor-thor-api-local1- */'
+
+.if-deploy-sit1: &if-deploy-sit1
+  if: '$CI_COMMIT_TAG =~ /^deploy-thor-sit1-\d{8}-\d+.*$ */'
+
+.if-deploy-thor-thor-api-sit1: &if-deploy-thor-thor-api-sit1
+  if: '$CI_COMMIT_TAG =~ /^deploy-thor-thor-api-sit1- */'
+
+.if-deploy-uat1: &if-deploy-uat1
+  if: '$CI_COMMIT_TAG =~ /^deploy-thor-uat1-\d{8}-\d+.*$ */'
+
+.if-deploy-thor-thor-api-uat1: &if-deploy-thor-thor-api-uat1
+  if: '$CI_COMMIT_TAG =~ /^deploy-thor-thor-api-uat1- */'
+
+.if-deploy-thor-thor-api-prod1: &if-deploy-thor-thor-api-prod1
+  if: '$CI_COMMIT_TAG =~ /^deploy-thor-thor-api-prod1- */'
+
+.if-deploy-thor-thor-api-aws1: &if-deploy-thor-thor-api-aws1
+  if: '$CI_COMMIT_TAG =~ /^deploy-thor-thor-api-aws1- */'
+
+
+.if-deploy-local2: &if-deploy-local2
+  if: '$CI_COMMIT_TAG =~ /^deploy-thor-local2-\d{8}-\d+.*$ */'
+
+.if-deploy-thor-thor-api-local2: &if-deploy-thor-thor-api-local2
+  if: '$CI_COMMIT_TAG =~ /^deploy-thor-thor-api-local2- */'
+
+.if-deploy-sit2: &if-deploy-sit2
+  if: '$CI_COMMIT_TAG =~ /^deploy-thor-sit2-\d{8}-\d+.*$ */'
+
+.if-deploy-thor-thor-api-sit2: &if-deploy-thor-thor-api-sit2
+  if: '$CI_COMMIT_TAG =~ /^deploy-thor-thor-api-sit2- */'
+
+.if-deploy-uat2: &if-deploy-uat2
+  if: '$CI_COMMIT_TAG =~ /^deploy-thor-uat2-\d{8}-\d+.*$ */'
+
+.if-deploy-thor-thor-api-uat2: &if-deploy-thor-thor-api-uat2
+  if: '$CI_COMMIT_TAG =~ /^deploy-thor-thor-api-uat2- */'
+
+.if-deploy-thor-thor-api-prod2: &if-deploy-thor-thor-api-prod2
+  if: '$CI_COMMIT_TAG =~ /^deploy-thor-thor-api-prod2- */'
+
+.if-deploy-thor-thor-api-aws2: &if-deploy-thor-thor-api-aws2
+  if: '$CI_COMMIT_TAG =~ /^deploy-thor-thor-api-aws2- */'
+
+
+.if-deploy-local3: &if-deploy-local3
+  if: '$CI_COMMIT_TAG =~ /^deploy-thor-local3-\d{8}-\d+.*$ */'
+
+.if-deploy-thor-thor-api-local3: &if-deploy-thor-thor-api-local3
+  if: '$CI_COMMIT_TAG =~ /^deploy-thor-thor-api-local3- */'
+
+.if-deploy-sit3: &if-deploy-sit3
+  if: '$CI_COMMIT_TAG =~ /^deploy-thor-sit3-\d{8}-\d+.*$ */'
+
+.if-deploy-thor-thor-api-sit3: &if-deploy-thor-thor-api-sit3
+  if: '$CI_COMMIT_TAG =~ /^deploy-thor-thor-api-sit3- */'
+
+.if-deploy-uat3: &if-deploy-uat3
+  if: '$CI_COMMIT_TAG =~ /^deploy-thor-uat3-\d{8}-\d+.*$ */'
+
+.if-deploy-thor-thor-api-uat3: &if-deploy-thor-thor-api-uat3
+  if: '$CI_COMMIT_TAG =~ /^deploy-thor-thor-api-uat3- */'
+
+.if-deploy-thor-thor-api-prod3: &if-deploy-thor-thor-api-prod3
+  if: '$CI_COMMIT_TAG =~ /^deploy-thor-thor-api-prod3- */'
+
+.if-deploy-thor-thor-api-aws3: &if-deploy-thor-thor-api-aws3
+  if: '$CI_COMMIT_TAG =~ /^deploy-thor-thor-api-aws3- */'
+
+
+.build:image:thor_api:rules:
+  rules:
+    - <<: *if-deploy-local
+      when: always
+    - <<: *if-deploy-sit
+      when: always
+    - <<: *if-deploy-uat
+      when: always
+    - <<: *if-deploy-thor-thor-api-local
+      when: always
+    - <<: *if-deploy-thor-thor-api-sit
+      when: always
+    - <<: *if-deploy-thor-thor-api-uat
+      when: always
+    - <<: *if-deploy-thor-thor-api-prod
+      when: always
+    - <<: *if-deploy-thor-thor-api-aws
+      when: always
+    - <<: *if-deploy-local1
+      when: always
+    - <<: *if-deploy-sit1
+      when: always
+    - <<: *if-deploy-uat1
+      when: always
+    - <<: *if-deploy-thor-thor-api-local1
+      when: always
+    - <<: *if-deploy-thor-thor-api-sit1
+      when: always
+    - <<: *if-deploy-thor-thor-api-uat1
+      when: always
+    - <<: *if-deploy-thor-thor-api-prod1
+      when: always
+    - <<: *if-deploy-thor-thor-api-aws1
+      when: always
+    - <<: *if-deploy-local2
+      when: always
+    - <<: *if-deploy-sit2
+      when: always
+    - <<: *if-deploy-uat2
+      when: always
+    - <<: *if-deploy-thor-thor-api-local2
+      when: always
+    - <<: *if-deploy-thor-thor-api-sit2
+      when: always
+    - <<: *if-deploy-thor-thor-api-uat2
+      when: always
+    - <<: *if-deploy-thor-thor-api-prod2
+      when: always
+    - <<: *if-deploy-thor-thor-api-aws2
+      when: always
+    - <<: *if-deploy-local3
+      when: always
+    - <<: *if-deploy-sit3
+      when: always
+    - <<: *if-deploy-uat3
+      when: always
+    - <<: *if-deploy-thor-thor-api-local3
+      when: always
+    - <<: *if-deploy-thor-thor-api-sit3
+      when: always
+    - <<: *if-deploy-thor-thor-api-uat3
+      when: always
+    - <<: *if-deploy-thor-thor-api-prod3
+      when: always
+    - <<: *if-deploy-thor-thor-api-aws3
+      when: always
+
+.deploy:local:thor_api:rules:
+  rules:
+    - <<: *if-deploy-local
+      when: on_success
+    - <<: *if-deploy-thor-thor-api-local
+      when: on_success
+    - when: never
+
+.deploy:sit:thor_api:rules:
+  rules:
+    - <<: *if-deploy-sit
+      when: on_success
+    - <<: *if-deploy-thor-thor-api-sit
+      when: on_success
+    - when: never
+
+.deploy:uat:thor_api:rules:
+  rules:
+    - <<: *if-deploy-uat
+      when: on_success
+    - <<: *if-deploy-thor-thor-api-uat
+      when: on_success
+    - when: never
+
+.deploy:prod:thor_api:rules:
+  rules:
+    - <<: *if-deploy-thor-thor-api-prod
+      when: on_success
+    - when: never
+
+.deploy:prod:thor_api:manual:rules:
+  rules:
+    - <<: *if-deploy-thor-thor-api-prod
+      when: manual
+    - when: never
+    
+.deploy:aws:thor_api:rules:
+  rules:
+    - <<: *if-deploy-thor-thor-api-aws
+      when: on_success
+    - when: never
+
+.deploy:aws:thor_api:manual:rules:
+  rules:
+    - <<: *if-deploy-thor-thor-api-aws
+      when: manual
+    - when: never
+
+.deploy:local1:thor_api:rules:
+  rules:
+    - <<: *if-deploy-local1
+      when: on_success
+    - <<: *if-deploy-thor-thor-api-local1
+      when: on_success
+    - when: never
+
+.deploy:sit1:thor_api:rules:
+  rules:
+    - <<: *if-deploy-sit1
+      when: on_success
+    - <<: *if-deploy-thor-thor-api-sit1
+      when: on_success
+    - when: never
+
+.deploy:uat1:thor_api:rules:
+  rules:
+    - <<: *if-deploy-uat1
+      when: on_success
+    - <<: *if-deploy-thor-thor-api-uat1
+      when: on_success
+    - when: never
+
+.deploy:prod1:thor_api:rules:
+  rules:
+    - <<: *if-deploy-thor-thor-api-prod1
+      when: on_success
+    - when: never
+
+.deploy:prod1:thor_api:manual:rules:
+  rules:
+    - <<: *if-deploy-thor-thor-api-prod1
+      when: manual
+    - when: never
+    
+.deploy:aws1:thor_api:rules:
+  rules:
+    - <<: *if-deploy-thor-thor-api-aws1
+      when: on_success
+    - when: never
+
+.deploy:aws1:thor_api:manual:rules:
+  rules:
+    - <<: *if-deploy-thor-thor-api-aws1
+      when: manual
+    - when: never
+
+.deploy:local2:thor_api:rules:
+  rules:
+    - <<: *if-deploy-local2
+      when: on_success
+    - <<: *if-deploy-thor-thor-api-local2
+      when: on_success
+    - when: never
+
+.deploy:sit2:thor_api:rules:
+  rules:
+    - <<: *if-deploy-sit2
+      when: on_success
+    - <<: *if-deploy-thor-thor-api-sit2
+      when: on_success
+    - when: never
+
+.deploy:uat2:thor_api:rules:
+  rules:
+    - <<: *if-deploy-uat2
+      when: on_success
+    - <<: *if-deploy-thor-thor-api-uat2
+      when: on_success
+    - when: never
+
+.deploy:prod2:thor_api:rules:
+  rules:
+    - <<: *if-deploy-thor-thor-api-prod2
+      when: on_success
+    - when: never
+
+.deploy:prod2:thor_api:manual:rules:
+  rules:
+    - <<: *if-deploy-thor-thor-api-prod2
+      when: manual
+    - when: never
+    
+.deploy:aws2:thor_api:rules:
+  rules:
+    - <<: *if-deploy-thor-thor-api-aws2
+      when: on_success
+    - when: never
+
+.deploy:aws2:thor_api:manual:rules:
+  rules:
+    - <<: *if-deploy-thor-thor-api-aws2
+      when: manual
+    - when: never
+
+.deploy:local3:thor_api:rules:
+  rules:
+    - <<: *if-deploy-local3
+      when: on_success
+    - <<: *if-deploy-thor-thor-api-local3
+      when: on_success
+    - when: never
+
+.deploy:sit3:thor_api:rules:
+  rules:
+    - <<: *if-deploy-sit3
+      when: on_success
+    - <<: *if-deploy-thor-thor-api-sit3
+      when: on_success
+    - when: never
+
+.deploy:uat3:thor_api:rules:
+  rules:
+    - <<: *if-deploy-uat3
+      when: on_success
+    - <<: *if-deploy-thor-thor-api-uat3
+      when: on_success
+    - when: never
+
+.deploy:prod3:thor_api:rules:
+  rules:
+    - <<: *if-deploy-thor-thor-api-prod3
+      when: on_success
+    - when: never
+
+.deploy:prod3:thor_api:manual:rules:
+  rules:
+    - <<: *if-deploy-thor-thor-api-prod3
+      when: manual
+    - when: never
+    
+.deploy:aws3:thor_api:rules:
+  rules:
+    - <<: *if-deploy-thor-thor-api-aws3
+      when: on_success
+    - when: never
+
+.deploy:aws3:thor_api:manual:rules:
+  rules:
+    - <<: *if-deploy-thor-thor-api-aws3
+      when: manual
+    - when: never
+
+
+

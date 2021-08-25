@@ -1,0 +1,65 @@
+
+post_build_thor_api_local:
+  extends:
+    - .deploy_vars_thor_api
+    - .post_build
+    - .deploy:local
+    - .deploy:local:thor_api:rules
+  
+  needs: ['build_image_thor_api']
+
+deploy_thor_api_local:
+  extends:
+    - .deploy_vars_thor_api
+    - .deploy:local:base:swarm:stack
+    - .deploy:local:thor_api:rules
+  needs: ['post_build_thor_api_local']
+
+post_build_thor_api_local1:
+  extends:
+    - .deploy_vars_thor_api
+    - .post_build
+    - .deploy:local1
+    - .deploy:local1:thor_api:rules
+  
+  needs: ['build_image_thor_api']
+
+deploy_thor_api_local1:
+  extends:
+    - .deploy_vars_thor_api
+    - .deploy:local1:base:swarm:stack
+    - .deploy:local1:thor_api:rules
+  needs: ['post_build_thor_api_local1']
+
+post_build_thor_api_local2:
+  extends:
+    - .deploy_vars_thor_api
+    - .post_build
+    - .deploy:local2
+    - .deploy:local2:thor_api:rules
+  
+  needs: ['build_image_thor_api']
+
+deploy_thor_api_local2:
+  extends:
+    - .deploy_vars_thor_api
+    - .deploy:local2:base:swarm:stack
+    - .deploy:local2:thor_api:rules
+  needs: ['post_build_thor_api_local2']
+
+post_build_thor_api_local3:
+  extends:
+    - .deploy_vars_thor_api
+    - .post_build
+    - .deploy:local3
+    - .deploy:local3:thor_api:rules
+  
+  needs: ['build_image_thor_api']
+
+deploy_thor_api_local3:
+  extends:
+    - .deploy_vars_thor_api
+    - .deploy:local3:base:swarm:stack
+    - .deploy:local3:thor_api:rules
+  needs: ['post_build_thor_api_local3']
+

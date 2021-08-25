@@ -1,0 +1,62 @@
+
+post_build_thor_api_prod:
+  extends:
+    - .deploy_vars_thor_api
+    - .post_build
+    - .deploy:prod
+    - .deploy:prod:thor_api:rules
+  
+  needs: ['build_image_thor_api']
+
+deploy_thor_api_prod:
+  extends:
+    - .deploy_vars_thor_api
+    - .deploy:prod:base:swarm:stack
+    - .deploy:prod:thor_api:rules
+  needs: ['post_build_thor_api_prod']
+post_build_thor_api_prod1:
+  extends:
+    - .deploy_vars_thor_api
+    - .post_build
+    - .deploy:prod1
+    - .deploy:prod1:thor_api:rules
+  
+  needs: ['build_image_thor_api']
+
+deploy_thor_api_prod1:
+  extends:
+    - .deploy_vars_thor_api
+    - .deploy:prod1:base:swarm:stack
+    - .deploy:prod1:thor_api:rules
+  needs: ['post_build_thor_api_prod1']
+post_build_thor_api_prod2:
+  extends:
+    - .deploy_vars_thor_api
+    - .post_build
+    - .deploy:prod2
+    - .deploy:prod2:thor_api:rules
+  
+  needs: ['build_image_thor_api']
+
+deploy_thor_api_prod2:
+  extends:
+    - .deploy_vars_thor_api
+    - .deploy:prod2:base:swarm:stack
+    - .deploy:prod2:thor_api:rules
+  needs: ['post_build_thor_api_prod2']
+post_build_thor_api_prod3:
+  extends:
+    - .deploy_vars_thor_api
+    - .post_build
+    - .deploy:prod3
+    - .deploy:prod3:thor_api:rules
+  
+  needs: ['build_image_thor_api']
+
+deploy_thor_api_prod3:
+  extends:
+    - .deploy_vars_thor_api
+    - .deploy:prod3:base:swarm:stack
+    - .deploy:prod3:thor_api:rules
+  needs: ['post_build_thor_api_prod3']
+

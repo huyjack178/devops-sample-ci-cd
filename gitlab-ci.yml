@@ -1,0 +1,29 @@
+stages:
+  - build
+  - post-build
+  - deploy
+
+variables:
+  DOCKER_COMPOSE_REPO_URL: git@gitlab.nexdev.net:ci/repos-ci/nexus_thor_thor_api.git
+
+include:
+  - project: 'ci/common-ci'
+    ref: rocketor
+    file: 'rocketor-integration/rules/index.gitlab-ci.yml'
+  - project: 'ci/common-ci'
+    ref: rocketor
+    file: 'docker/base/build-docker-image.gitlab-ci.yml'
+  - project: 'ci/common-ci'
+    ref: rocketor
+    file: 'docker/base/post-build-docker-image.gitlab-ci.yml'
+  - project: 'ci/common-ci'
+    ref: rocketor
+    file: '_teams/nexcel/others/deploy-docker-swarm-stack/index.gitlab-ci.yml'
+  - .gitlab-ci/thor_api/build.gitlab-ci.yml
+  - .gitlab-ci/thor_api/deploy-vars.gitlab-ci.yml
+  - .gitlab-ci/thor_api/rules.gitlab-ci.yml
+  - .gitlab-ci/thor_api/deploy-local.gitlab-ci.yml
+  - .gitlab-ci/thor_api/deploy-sit.gitlab-ci.yml
+  - .gitlab-ci/thor_api/deploy-uat.gitlab-ci.yml
+  - .gitlab-ci/thor_api/deploy-prod.gitlab-ci.yml
+  - .gitlab-ci/thor_api/deploy-aws.gitlab-ci.yml

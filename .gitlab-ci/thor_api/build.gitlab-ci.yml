@@ -1,0 +1,8 @@
+
+  
+
+build_image_thor_api:
+  extends:
+    - .deploy_vars_thor_api
+    - .build:default:image:noenv:multistage
+    - .build:image:thor_api:rules

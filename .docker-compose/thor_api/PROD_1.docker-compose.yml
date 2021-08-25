@@ -1,0 +1,52 @@
+########################################################################
+# File managed by Ansible - NexOps
+# Your changes will be overwritten.
+#######################################################################
+
+version: '3.8'
+
+configs:
+  thor_api_PROD_1_config_@CONFIG_VERSION:
+    file: /var/www/gluster/web/nexus/thor/thor_api/PROD_1/configs/appsettings.json
+    labels:
+      - "io.portainer.accesscontrol.teams=NEXUS_LEADERS"
+
+services:
+  thor_api_PROD_1:
+    image: registry.nexdev.net:5050/nexcel/nexus/thor-api:PROD_1-latest
+
+    configs:
+      - source: thor_api_PROD_1_config_@CONFIG_VERSION
+        target: /app/./appsettings.json
+    deploy:
+      mode: replicated
+      replicas: 1
+      endpoint_mode: dnsrr
+      update_config:
+        order: start-first
+        failure_action: rollback
+        delay: 10s
+      rollback_config:
+        parallelism: 0
+        order: stop-first
+      restart_policy:
+        condition: any
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+      placement:
+        constraints:
+          - node.labels.NEXCEL_LOW_STORAGE == yes
+    networks:
+      - swarm_nexcel_prod
+    healthcheck:
+      test: ['CMD', 'curl', '-f', "http://localhost:5000/whoami"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    labels:
+      - "io.portainer.accesscontrol.teams=NEXUS_LEADERS"
+networks:
+  swarm_nexcel_prod:
+    external: true
+

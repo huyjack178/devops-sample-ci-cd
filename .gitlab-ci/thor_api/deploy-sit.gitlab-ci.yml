@@ -1,0 +1,65 @@
+
+post_build_thor_api_sit:
+  extends:
+    - .deploy_vars_thor_api
+    - .post_build
+    - .deploy:sit
+    - .deploy:sit:thor_api:rules
+  
+  needs: ['build_image_thor_api']
+
+deploy_thor_api_sit:
+  extends:
+    - .deploy_vars_thor_api
+    - .deploy:sit:base:swarm:stack
+    - .deploy:sit:thor_api:rules
+  needs: ['post_build_thor_api_sit']
+
+post_build_thor_api_sit1:
+  extends:
+    - .deploy_vars_thor_api
+    - .post_build
+    - .deploy:sit1
+    - .deploy:sit1:thor_api:rules
+  
+  needs: ['build_image_thor_api']
+
+deploy_thor_api_sit1:
+  extends:
+    - .deploy_vars_thor_api
+    - .deploy:sit1:base:swarm:stack
+    - .deploy:sit1:thor_api:rules
+  needs: ['post_build_thor_api_sit1']
+
+post_build_thor_api_sit2:
+  extends:
+    - .deploy_vars_thor_api
+    - .post_build
+    - .deploy:sit2
+    - .deploy:sit2:thor_api:rules
+  
+  needs: ['build_image_thor_api']
+
+deploy_thor_api_sit2:
+  extends:
+    - .deploy_vars_thor_api
+    - .deploy:sit2:base:swarm:stack
+    - .deploy:sit2:thor_api:rules
+  needs: ['post_build_thor_api_sit2']
+
+post_build_thor_api_sit3:
+  extends:
+    - .deploy_vars_thor_api
+    - .post_build
+    - .deploy:sit3
+    - .deploy:sit3:thor_api:rules
+  
+  needs: ['build_image_thor_api']
+
+deploy_thor_api_sit3:
+  extends:
+    - .deploy_vars_thor_api
+    - .deploy:sit3:base:swarm:stack
+    - .deploy:sit3:thor_api:rules
+  needs: ['post_build_thor_api_sit3']
+

@@ -1,0 +1,62 @@
+
+post_build_thor_api_aws:
+  extends:
+    - .deploy_vars_thor_api
+    - .post_build
+    - .deploy:aws
+    - .deploy:aws:thor_api:rules
+  
+  needs: ['build_image_thor_api']
+
+deploy_thor_api_aws:
+  extends:
+    - .deploy_vars_thor_api
+    - .deploy:aws:base:swarm:stack
+    - .deploy:aws:thor_api:rules
+  needs: ['post_build_thor_api_aws']
+post_build_thor_api_aws1:
+  extends:
+    - .deploy_vars_thor_api
+    - .post_build
+    - .deploy:aws1
+    - .deploy:aws1:thor_api:rules
+  
+  needs: ['build_image_thor_api']
+
+deploy_thor_api_aws1:
+  extends:
+    - .deploy_vars_thor_api
+    - .deploy:aws1:base:swarm:stack
+    - .deploy:aws1:thor_api:rules
+  needs: ['post_build_thor_api_aws1']
+post_build_thor_api_aws2:
+  extends:
+    - .deploy_vars_thor_api
+    - .post_build
+    - .deploy:aws2
+    - .deploy:aws2:thor_api:rules
+  
+  needs: ['build_image_thor_api']
+
+deploy_thor_api_aws2:
+  extends:
+    - .deploy_vars_thor_api
+    - .deploy:aws2:base:swarm:stack
+    - .deploy:aws2:thor_api:rules
+  needs: ['post_build_thor_api_aws2']
+post_build_thor_api_aws3:
+  extends:
+    - .deploy_vars_thor_api
+    - .post_build
+    - .deploy:aws3
+    - .deploy:aws3:thor_api:rules
+  
+  needs: ['build_image_thor_api']
+
+deploy_thor_api_aws3:
+  extends:
+    - .deploy_vars_thor_api
+    - .deploy:aws3:base:swarm:stack
+    - .deploy:aws3:thor_api:rules
+  needs: ['post_build_thor_api_aws3']
+

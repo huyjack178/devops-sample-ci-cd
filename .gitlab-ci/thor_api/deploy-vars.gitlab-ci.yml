@@ -1,0 +1,14 @@
+.deploy_vars_thor_api:
+  variables:
+    PROJECT_ROOT_PATH: ./
+    WORKING_PATH: /var/www/gluster/web/nexus/thor/thor_api
+    SERVICE_NAME: thor_thor_api
+    DOCKER_IMAGE_PATH: nexcel/nexus/thor-api
+    DOCKER_FILE_PATH: ./Thor.WebAPI
+    DOCKER_FILE_NAME: Dockerfile
+    CONFIG_FILE_PATH: ./Thor.WebAPI
+    CONFIG_FILE_NAME: appsettings
+    CONFIG_FILE_EXTENSION: json
+    STACK_NAME: thor
+    DOCKER_COMPOSE_FILE_PATH: .
+    DOCKER_COMPOSE_REPO_PATH: .docker-compose/thor_api

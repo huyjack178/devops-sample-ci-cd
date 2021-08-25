@@ -1,0 +1,65 @@
+
+post_build_thor_api_uat:
+  extends:
+    - .deploy_vars_thor_api
+    - .post_build
+    - .deploy:uat
+    - .deploy:uat:thor_api:rules
+  
+  needs: ['build_image_thor_api']
+
+deploy_thor_api_uat:
+  extends:
+    - .deploy_vars_thor_api
+    - .deploy:uat:base:swarm:stack
+    - .deploy:uat:thor_api:rules
+  needs: ['post_build_thor_api_uat']
+
+post_build_thor_api_uat1:
+  extends:
+    - .deploy_vars_thor_api
+    - .post_build
+    - .deploy:uat1
+    - .deploy:uat1:thor_api:rules
+  
+  needs: ['build_image_thor_api']
+
+deploy_thor_api_uat1:
+  extends:
+    - .deploy_vars_thor_api
+    - .deploy:uat1:base:swarm:stack
+    - .deploy:uat1:thor_api:rules
+  needs: ['post_build_thor_api_uat1']
+
+post_build_thor_api_uat2:
+  extends:
+    - .deploy_vars_thor_api
+    - .post_build
+    - .deploy:uat2
+    - .deploy:uat2:thor_api:rules
+  
+  needs: ['build_image_thor_api']
+
+deploy_thor_api_uat2:
+  extends:
+    - .deploy_vars_thor_api
+    - .deploy:uat2:base:swarm:stack
+    - .deploy:uat2:thor_api:rules
+  needs: ['post_build_thor_api_uat2']
+
+post_build_thor_api_uat3:
+  extends:
+    - .deploy_vars_thor_api
+    - .post_build
+    - .deploy:uat3
+    - .deploy:uat3:thor_api:rules
+  
+  needs: ['build_image_thor_api']
+
+deploy_thor_api_uat3:
+  extends:
+    - .deploy_vars_thor_api
+    - .deploy:uat3:base:swarm:stack
+    - .deploy:uat3:thor_api:rules
+  needs: ['post_build_thor_api_uat3']
+
