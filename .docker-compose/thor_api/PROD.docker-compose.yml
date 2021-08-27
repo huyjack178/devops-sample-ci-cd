@@ -21,7 +21,7 @@ services:
     deploy:
       mode: replicated
       replicas: 1
-      endpoint_mode: dnsrr
+      #endpoint_mode: dnsrr
       update_config:
         order: start-first
         failure_action: rollback
@@ -37,6 +37,10 @@ services:
       placement:
         constraints:
           - node.labels.NEXCEL_LOW_STORAGE == yes
+    ports:
+      - target: 5000
+        published: 8282
+        mode: ingress
     networks:
       - swarm_nexcel_prod
     healthcheck:
